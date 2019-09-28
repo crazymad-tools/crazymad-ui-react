@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import './index.scss';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 interface Props {
   value: any;
@@ -21,7 +21,8 @@ const Input: React.FC<Props> = props => {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    let value = _.cloneDeep(props.value || '');
+    // let value = _.cloneDeep(props.value || '');
+    let value = props.value || '';
     setValue(value);
   }, [props.value]);
 
