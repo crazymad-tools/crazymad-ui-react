@@ -5,7 +5,7 @@ const IndexPage: React.FC = props => {
 
   return (
     <div>
-      <Dialog title="demo" visible={true} close={() => {}} />
+      {/* <Dialog title="demo" visible={true} close={() => {}} /> */}
     </div>
   );
 };

@@ -52,7 +52,7 @@ const Dialog: React.FC<DialogProps> = props => {
   }, [props.offset, dragOffset]);
 
   function close() {
-    props.close ? props.close() : null;
+    props.close && props.close();
   }
 
   function startMove(e: any) {

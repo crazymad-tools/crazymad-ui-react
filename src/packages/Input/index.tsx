@@ -43,7 +43,7 @@ const Input: React.FC<Props> = props => {
       }
     }
     setError(error);
-    props.check instanceof Function ? props.check(error) : null;
+    props.check instanceof Function && props.check(error);
   }
 
   /**
