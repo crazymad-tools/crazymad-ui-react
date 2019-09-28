@@ -1,32 +1,33 @@
-import React from 'react';
-// import { useEffect } from 'react';
-import './index.scss';
+import React from "react";
+import { EventInterface } from '../common/EventInterface';
+import "./index.scss";
 
-interface ButtonProps {
-
+interface ButtonProps extends EventInterface {
   type?: String;
-  onClick?: Function;
-
 }
 
 const Button: React.FC<ButtonProps> = props => {
+  const {
+    type: string,
+    ...event
+  } = props;
 
-  // useEffect(() => {
-  //   // console.log(props.active);
-  // }, [props.type]);
-
-  function onclick () {
-    // console.log(props.onClick);
+  function onclick(e: any) {
     if (props.onClick instanceof Function) {
-      props.onClick();
+      props.onClick(e);
     }
   }
 
   return (
-    <button className={`plan-btn ${props.type ? 'plan-btn-' + props.type : 'plan-btn-default'}`} onClick={onclick}>{props.children}</button>    
+    <button
+      className={`plan-btn ${
+        props.type ? "plan-btn-" + props.type : "plan-btn-default"
+      }`}
+      {...event}
+    >
+      {props.children}
+    </button>
   );
-
-}
+};
 
 export default Button;
-

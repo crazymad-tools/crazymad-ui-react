@@ -13,14 +13,14 @@
   }
 }
 .plan-btn-default {
-  background: rgba(188, 189, 191, 0.2);
+  background: white;
   border: 1px solid #bcbdbf;
   &:hover {
-    background: #283346CC;
+    background: #eee;
   }
   &:active {
-    background: #283346CC;
-    border: 1px solid #3c97ff;
+    background: #eee;
+    border: 1px solid #ccc;
   }
 }
 .plan-btn-primary {
