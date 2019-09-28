@@ -10,14 +10,12 @@ const IndexPage: React.FC = props => {
   }
 
   function hideDialog () {
-    console.log('hide dialog');
     setShow(false);
-    console.log(show);
   }
 
   return (
     <div>
-      <Button onClick={showDialog}>OPEN</Button>
+      <Button onClick={showDialog} type="primary">OPEN</Button>
       <Dialog
         title="demo"
         visible={show}

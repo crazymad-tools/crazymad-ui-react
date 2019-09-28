@@ -2,7 +2,7 @@
   height: 32px;
   padding: 0 18px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   outline: none;
   transition: all 0.15s;
@@ -24,7 +24,10 @@
   }
 }
 .plan-btn-primary {
-  // background: #283346;
-  background: rgba(40, 51, 70, 0.8);
-  border: 1px solid #3c97ff;
+  background: rgb(17, 112, 255);
+  border: 1px solid rgb(8, 90, 214);
+  color: white;
+  &:hover {
+    background: rgb(8, 90, 214);
+  }
 }

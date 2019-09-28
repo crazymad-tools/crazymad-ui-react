@@ -166,7 +166,7 @@ const Dialog: React.FC<DialogProps> = props => {
           }`}
         >
           {props.confirm ? (
-            <Button onClick={confirm}>
+            <Button onClick={confirm} type="primary">
               {UIManager.getWord("confirm")}
             </Button>
           ) : null}
