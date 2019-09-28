@@ -1,4 +1,28 @@
-.plan-btn {
+@keyframes wave {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+.cm-btn-wave {
+  position: absolute;
+  // background: rgba(0, 0, 255, 0.3);
+  animation: 1s wave;
+  animation-fill-mode:forwards;
+  pointer-events: none;
+}
+
+.cm-btn {
+  position: relative;
   height: 32px;
   padding: 0 18px;
   border-radius: 5px;
@@ -7,23 +31,27 @@
   outline: none;
   transition: all 0.15s;
   min-width: max-content;
-  &.plan-btn-active {
+  overflow: hidden;
+  &.cm-btn-active {
     background: rgba(59, 130, 217, 0.9);
     border: 1px solid rgba(59, 130, 217, 1);
   }
 }
-.plan-btn-default {
+.cm-btn-default {
   background: white;
   border: 1px solid #bcbdbf;
   &:hover {
-    background: #eee;
+    // background: #eee;
   }
   &:active {
-    background: #eee;
+    // background: #eee;
     border: 1px solid #ccc;
   }
+  .cm-btn-wave {
+    background: rgba(116, 174, 240, 0.3);
+  }
 }
-.plan-btn-primary {
+.cm-btn-primary {
   background: rgb(17, 112, 255);
   border: 1px solid rgb(8, 90, 214);
   color: white;
