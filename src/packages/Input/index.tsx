@@ -66,7 +66,7 @@ const Input: React.FC<Props> = props => {
 
   function blur (e: any) {
     check(e);
-    props.onBlur ? props.onBlur(e) : null;
+    props.onBlur && props.onBlur(e);
   }
 
   return (
