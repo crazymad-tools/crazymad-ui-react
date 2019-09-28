@@ -1,0 +1,30 @@
+.plan-btn {
+  height: 32px;
+  padding: 0 18px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s;
+  min-width: max-content;
+  &.plan-btn-active {
+    background: rgba(59, 130, 217, 0.9);
+    border: 1px solid rgba(59, 130, 217, 1);
+  }
+}
+.plan-btn-default {
+  background: rgba(188, 189, 191, 0.2);
+  border: 1px solid #bcbdbf;
+  &:hover {
+    background: #283346CC;
+  }
+  &:active {
+    background: #283346CC;
+    border: 1px solid #3c97ff;
+  }
+}
+.plan-btn-primary {
+  // background: #283346;
+  background: rgba(40, 51, 70, 0.8);
+  border: 1px solid #3c97ff;
+}
