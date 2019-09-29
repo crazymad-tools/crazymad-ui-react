@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { Dialog, Icon, Button } from "../packages";
+import { Dialog, Icon, Button, Input } from "../../packages";
+import Header from '../common/Header';
+
+import './index.scss';
 
 const IndexPage: React.FC = props => {
   const [show, setShow] = useState<any>({
@@ -11,14 +14,17 @@ const IndexPage: React.FC = props => {
     show[key] = true;
     setShow(Object.assign({}, show));
   }
-
+  
   function hideDialog(key: string) {
     show[key] = false;
     setShow(Object.assign({}, show));
   }
 
   return (
-    <div>
+    <>
+    <Header />
+    <div className="demo-page">
+      <h2>对话框</h2>
       <Button onClick={showDialog.bind(null, 'demo1')} type="primary">DEMO1</Button>
       <Button style={{ marginLeft: '20px' }} onClick={showDialog.bind(null, 'demo2')} type="primary">DEMO2</Button>
       <Dialog
@@ -49,9 +55,14 @@ const IndexPage: React.FC = props => {
           <p>左右居中，不开启遮罩，允许拖拽</p>
         </div>
       </Dialog>
-      <hr />
+      <h2>按钮</h2>
       <Button>波纹</Button>
+      <Button type="primary" style={{marginLeft: '20px'}}>波纹</Button>
+      <Button type="success" style={{marginLeft: '20px'}}>波纹</Button>
+      <h2>输入框</h2>
+      <Input value={''} placeholder="输入框实例" />
     </div>
+    </>
   );
 };
 

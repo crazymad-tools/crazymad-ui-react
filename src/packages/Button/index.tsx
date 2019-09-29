@@ -25,7 +25,9 @@ const Button: React.FC<ButtonProps> = props => {
     id: number
   }>();
 
-  function onclick(e: any) {
+  const [animationKey, setAnimationKey] = useState('false');
+
+  function onmousedown(e: any) {
     let x = e.nativeEvent.offsetX;
     let y = e.nativeEvent.offsetY;
     let width = e.currentTarget.clientWidth;
@@ -41,7 +43,13 @@ const Button: React.FC<ButtonProps> = props => {
       id: new Date().getTime()
     };
     setWave(wave);
-    props.onClick && props.onClick(e);
+    setAnimationKey('false');
+    props.onMouseDown && props.onMouseDown(e);
+  }
+
+  function onmouseup(e: any) {
+    setAnimationKey('true');
+    props.onMouseUp && props.onMouseUp(e);
   }
 
   return (
@@ -51,7 +59,9 @@ const Button: React.FC<ButtonProps> = props => {
         props.type ? "cm-btn-" + props.type : "cm-btn-default"
       }`}
       {...event}
-      onMouseDown={onclick}
+      onMouseDown={onmousedown}
+      onMouseUp={onmouseup}
+      animation-key={animationKey}
     >
       {wave && <span className="cm-btn-wave" style={wave.style} key={wave.id}/>}
       {props.children}

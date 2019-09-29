@@ -14,6 +14,7 @@ interface Props {
   onBlur?: any;
   check?: any;
   error?: boolean;
+  placeholder?: string;
 }
 
 const Input: React.FC<Props> = props => {
@@ -72,11 +73,12 @@ const Input: React.FC<Props> = props => {
   return (
     <input
       value={value}
-      className={`pop-input ${error || props.error ? 'pop-input-error' : ''}`}
+      className={`cm-input ${error || props.error ? 'cm-input-error' : ''}`}
       // type={props.type}
       onBlur={blur}
       onChange={change}
       onInput={change}
+      placeholder={props.placeholder}
     />
   );
 };

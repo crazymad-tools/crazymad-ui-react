@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import IndexPage from './pages/index';
+import IndexPage from './pages/Index';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<IndexPage />, document.getElementById('root'));
