@@ -3,8 +3,8 @@ import Button from "../Button";
 import Icon from "../Icon";
 import UIManager from "../Manager";
 import { useState, useEffect } from "react";
-// import { Icon } from 'antd';
 import DialogBarBtn from "./BarBtn";
+import Dom from '../utils/Dom';
 import "./index.scss";
 
 interface DialogProps {
@@ -24,7 +24,7 @@ interface DialogProps {
 }
 
 const Dialog: React.FC<DialogProps> = props => {
-  const dialogRef: any = React.createRef();
+  const dialogRef: any = React.createRef<any>();
   const [style, setStyle] = useState<any>({});
   // 拖拽偏移量
   const [dragOffset, setDragOffset] = useState<any>({
@@ -33,9 +33,20 @@ const Dialog: React.FC<DialogProps> = props => {
   });
 
   useEffect(() => {
+    // let marginLeft = dragOffset.x;
+    // let marginTop = dragOffset.y;
+    // console.log(left, top);
+    // if (left + dragOffset.x < 0) {
+    //   marginLeft = -left;
+    // } else {
+    // }
+    // console.log(dialogRef.current.offsetTop);
+    // console.log(width, height);
+    // console.log(dialogRef.current);
+
     let transform: string = "";
     let style: any = {
-      marginLeft: dragOffset.x + "px",
+      marginLeft: dragOffset.y + "px",
       marginTop: dragOffset.y + "px",
       display: props.visible ? "block" : "none"
     };
@@ -77,12 +88,24 @@ const Dialog: React.FC<DialogProps> = props => {
     // 避免将用户的回调覆盖，预先保存
     let onmousemove = document.onmousemove;
     let onmouseup = document.onmouseup;
-    let onmouseout = document.onmouseout;
+    // let onmouseout = document.onmouseout;
 
     let offsetX = e.clientX;
     let offsetY = e.clientY;
     document.onmousemove = (e: MouseEvent) => {
+      let x = e.clientX - offsetX + dragOffset.x;
+      let y = e.clientY - offsetY + dragOffset.y;
+      x = Math.max(0, x);
+      y = Math.max(0, y);
+
+      let { offsetLeft, offsetTop } = Dom.getOffsetDistance(dialogRef.current);
+      // let width = dialogRef.current.clientWidth;
+      // let height = dialogRef.current.clientHeight;
+      // let left = dialogRef.current.offsetLeft;
+      // let top = dialogRef.current.offsetTop;
+      console.log(offsetLeft, offsetTop);
       setDragOffset({
+        // x: x, y: y
         x: e.clientX - offsetX + dragOffset.x,
         y: e.clientY - offsetY + dragOffset.y
       });
@@ -90,29 +113,29 @@ const Dialog: React.FC<DialogProps> = props => {
 
     document.onmouseup = () => {
       document.onmousemove = onmousemove;
-      window.onmouseout = onmouseout;
+      // window.onmouseout = onmouseout;
       document.onmouseup = onmouseup;
       document.body.classList.remove("moving");
     };
 
-    document.onmouseout = () => {
-      document.onmousemove = onmousemove;
-      document.onmouseout = onmouseout;
-      document.onmouseup = onmouseup;
-      document.body.classList.remove("moving");
-    };
+    // document.onmouseout = () => {
+    //   document.onmousemove = onmousemove;
+    //   document.onmouseout = onmouseout;
+    //   document.onmouseup = onmouseup;
+    //   document.body.classList.remove("moving");
+    // };
   }
 
   function close(e: React.MouseEvent<HTMLElement, MouseEvent>) {
     e.stopPropagation();
     props.close && props.close();
   }
-  
-  function confirm (e: React.MouseEvent<HTMLElement, MouseEvent>) {
+
+  function confirm(e: React.MouseEvent<HTMLElement, MouseEvent>) {
     props.confirm && props.confirm();
   }
 
-  function cancel (e: React.MouseEvent<HTMLElement, MouseEvent>) {
+  function cancel(e: React.MouseEvent<HTMLElement, MouseEvent>) {
     props.cancel && props.cancel();
   }
 
@@ -171,9 +194,7 @@ const Dialog: React.FC<DialogProps> = props => {
             </Button>
           ) : null}
           {props.cancel ? (
-            <Button onClick={cancel}>
-              {UIManager.getWord("cancel")}
-            </Button>
+            <Button onClick={cancel}>{UIManager.getWord("cancel")}</Button>
           ) : null}
         </div>
       </div>
