@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Dialog, Icon, Button, Input } from "../../packages";
+import { Dialog, Icon, Button, Input, Tooltip } from "../../packages";
 import Header from '../common/Header';
 
 import './index.scss';
@@ -61,6 +61,21 @@ const IndexPage: React.FC = props => {
       <Button type="success" style={{marginLeft: '20px'}}>波纹</Button>
       <h2>输入框</h2>
       <Input value={''} placeholder="输入框实例" />
+      <h2>文字提示</h2>
+      <Tooltip direction="top" content="顶部文字提示" delay={500}>
+        <Button type="primary" style={{marginLeft: "500px"}}>顶部文字提示</Button>
+      </Tooltip>
+      <br />
+      <Tooltip direction="left" content="左侧文字提示" delay={500}>
+        <Button type="primary" style={{marginLeft: "300px"}}>左侧文字提示</Button>
+      </Tooltip>
+      <Tooltip direction="right" content="右侧文字提示" delay={500}>
+        <Button type="primary" style={{marginLeft: "300px"}}>右侧文字提示</Button>
+      </Tooltip>
+      <br />
+      <Tooltip direction="bottom" content="底部文字提示" delay={500}>
+        <Button type="primary" style={{marginLeft: "500px"}}>底部文字提示</Button>
+      </Tooltip> 
     </div>
     </>
   );
